@@ -1,0 +1,571 @@
+$maincolor: #019863;
+$contwidth: 1400px;
+
+@mixin clearfix{
+     display: block;
+     clear: both;
+     content: '';
+}
+@mixin cont{
+     width: $contwidth;
+     min-width: $contwidth;
+     padding-right: 20px;
+     padding-left: 20px;
+     margin: 0 auto;
+}
+@mixin abs0{
+     position: absolute;
+     top: 0;
+     right: 0;
+     bottom: 0;
+     left: 0;
+}
+@mixin headingsty{
+     display: block;
+     position: absolute;
+     top: 0;
+     width: 40px;
+     height: 2px;
+     background: #225727;
+     content: '';
+}
+@mixin contpadding{
+     padding-top: 60px;
+     padding-bottom: 60px;
+}
+@mixin aftersty{
+     display: block;
+     position: absolute;
+     content: "";
+}
+/* font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Noto+Sans+KR:wght@300;500;700;900&display=swap');
+
+/* slick-button */
+.slick-prev, .slick-next{
+     position: absolute;
+     z-index: 2;
+     width: 30px;
+     height: 30px;
+     padding: 0 8px;
+     border: none;
+     background: rgba(0,0,0,0.6);
+     color: transparent;
+     cursor: pointer;
+}
+.slick-prev, .slick-next{
+     &:before{
+          position: absolute;
+          color: white;
+          font-size: 0.9rem;
+          font-family: "xeicon";
+     }
+}
+
+.slick-prev:before{ content: "\e93d";}
+
+.sec01 .slick-prev{
+     right: 32px;
+     bottom: 0;
+}
+
+.sec03 .slick-prev{
+     top: 0;
+     left: 0;
+}
+
+.sec04 .slick-prev{
+     right: 32px;
+     bottom: 0;
+}
+
+.slick-next:before{ content: "\e940";}
+
+.sec01 .slick-next{
+     right: 0px;
+     bottom: 0;
+}
+
+.sec03 .slick-next{
+     top: 0;
+     left: 32px;
+}
+.sec04 .slick-next{
+     right: 0;
+     bottom: 0;
+}
+
+/* section-01 */
+.sec01{
+     background: #edeff5;
+     .visual img{ 
+          display: block;
+          padding: 30px 0;
+          margin: 0 auto;
+     }
+     .flex_wrapper{
+          justify-content: space-between;
+          @include cont;
+
+     }
+     .slide{
+          overflow: hidden;
+          width: 800px;
+          height: 500px;
+          img{
+               width: 100%;
+               height: 100%;
+               object-fit: cover;
+          }
+     }
+     .right_sec{
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 40%;
+          .tab_menu{
+               background: white;
+          }
+          .tab_btn{
+               ul{ display: flex;}
+               li{
+                    flex: 1;
+                    border-bottom: 1px solid rgba(102,102,102,0.3);
+                    background: white;
+                    text-align: center;
+                    a{
+                         display: block;
+                         color: #666;
+                         font-size: 1.2rem;
+                         line-height: 50px;
+                    }
+               }
+               .selected{ 
+                    background: $maincolor;
+                    span{
+                         position: relative;
+                         &:after{
+                         right: 0;
+                         bottom: -5px;
+                         width: 100%;
+                         height: 2px;
+                         background: white;
+                         @include aftersty;
+                         }
+                    }
+                    a{ color: white;}
+               }
+          } 
+          .tab_cont{
+               div{ display: none;}
+               ul{ padding: 15px 25px;}
+               li{
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 15px;
+                    font-weight: 300;
+                    a{
+                         overflow: hidden;
+                         width: 350px;
+                         white-space: nowrap; 
+                         text-overflow: ellipsis;
+                    }
+               }
+               .selected{ display: block;}
+          }
+          .right_ban{
+               height: 200px;
+               img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+               }
+          }
+     }
+}
+
+/* section-02 */
+.sec02{
+     padding: 30px 0 140px 0;
+     background: #edeff5;
+     .flex_wrapper{
+          justify-content: space-between;
+          @include cont;
+     }
+     li{
+          width: calc(100% / 4 - 1%);
+          height: 200px;
+          border-radius: 20px;
+          box-shadow: 1px 1px 0 rgba(0,0,0, 0.1);
+          transition: all 0.1s ease-in-out;
+          @for $i from 1 through 4{
+               &:nth-child(#{$i}){ background: white url(../img/png/btmcard_bld_#{$i}_bg.png) no-repeat right bottom;}
+          }
+          &:hover{ box-shadow: 0 3px 10px rgba(0,0,0, 0.2);}
+          a{
+               display: block;
+               height: 100%;
+               padding: 20px;
+               color: #444;
+          }
+          h4{
+               font-weight: 300;
+               font-size: 1.2rem;
+               text-align: center;
+          }
+          span{ 
+               display: block;
+               margin-top: 20px;
+               font-weight: 300;
+               font-size: 0.9rem;
+               line-height: 1.5;
+          }
+     }
+}
+
+/* quick-menu */
+.quick_menu{
+     position: relative;
+     margin-top: -91px;
+     .flex_wrapper{
+          justify-content: space-between;
+          align-items: center;
+          padding-top: 25px;
+          padding-bottom: 25px;
+          background: white;
+          box-shadow: 1px 3px 15px rgba(0,0,0,0.2);
+          @include cont;
+     }
+     div:first-child{
+          padding: 0 40px;
+          h3{ 
+               padding: 0;
+               margin-bottom: 20px;
+               font-weight: 400;
+          }
+          span{ font-weight: 600;}
+     }
+     div:last-child{
+          overflow: hidden;
+          width: 900px;
+          ul{ display: flex;}
+          li{
+               margin: 0 25px;
+               @for $i from 1 through 10{ 
+                    &:nth-child(#{$i}) i{ 
+                         background-position-x: -60px * ($i - 1);
+                    }
+               }
+               a{
+                    display: inline-block;
+                    position: relative;
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 70%;
+                    background: #f5f6fa;
+                    box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+                    &:hover{ box-shadow: 2px 2px 7px rgba(0,0,0,0.4);}
+               }
+          }
+          i{
+               display: inline-block;
+               position: absolute;
+               top: 50%;
+               left: 50%;
+               width: 60px;
+               height: 60px;
+               background: url(../img/png/quick_menu.png) no-repeat;
+               transform: translate(-50%,-50%);
+          }
+          span{
+               display: block;
+               text-align: center;
+          }
+     }
+}
+
+/* section-03 */
+.sec03{
+     padding-top: 60px;
+     .flex_wrapper{
+          justify-content: space-between;
+          > div{
+               width: 23%;
+               padding-bottom: 60px;
+               border-bottom: 1px dashed #225727;
+               h3{ &:before{ @include headingsty;}}
+          }
+     }
+     .slide{
+          overflow: hidden;
+          position: relative;
+          a{ display: block;}
+          ul{ display: flex;}
+          li{ width: 100%;}
+     }
+     .thumbnail{
+          overflow: hidden;
+          width: 312.8px;
+          height: 200px;
+          img{
+               width: 100%;
+               height: 100%;
+               object-fit: cover;
+          }
+     }
+     .media_box iframe{
+          width: 100%;
+          height: 200px;
+     }
+     .text_box{
+          h4{
+               overflow: hidden;
+               padding: 15px 0;
+               white-space: nowrap;
+               text-overflow: ellipsis;
+          }
+          p{
+               display: -webkit-box;
+               overflow: hidden;
+               line-height: 1.5;
+               -webkit-box-orient: vertical;
+               -webkit-line-clamp: 3;
+          }
+     }
+} 
+
+/* section-04 */
+.sec04{
+     @include contpadding;
+     .flex_wrapper{
+          justify-content: space-between;
+          > div{
+               width: 23%;
+               .wrapper{ height: 320px;}
+          }
+          h3:not(.exclude){ &:before{ @include headingsty;}}
+     }
+     .mayor{
+          .wrapper{
+               position: relative;
+               border: 10px solid rgba(0,31,20,0.8);
+               background: white url(../img/png/mayor.png) no-repeat left bottom;
+          }
+          p{
+               position: absolute;
+               top: 0;
+               right: 0;
+               padding: 10px;
+          }
+          strong{
+               display: block;
+               font-size: 1.3rem;
+               span{font-weight: 900;}
+          }
+          a{
+               right: 30px;
+               bottom: 50px;
+               float: right;
+               padding: 10px 20px;
+               margin-top: 20px;
+               border-radius: 25px;
+               background: $maincolor;
+               color: white;
+               font-weight: 600;
+               &:hover{ background: #005738;}
+          }
+     }
+     .info{
+          ul{
+               display: flex;
+               flex-wrap: wrap;
+               justify-content: space-between;
+               align-content: space-between;
+               height: 100%;
+          }
+          li{
+               width: 32%;
+               border: 1px solid #ddd;
+               background: white;
+               text-align: center;
+               @for $i from 1 through 6{
+                    &:nth-child(#{$i}) i{ background-position-x: -55px * ($i - 1);}
+               }
+               a{
+                    display: block;
+                    height: 100%;
+                    padding: 15px 10px;
+                    &:hover{
+                         background: $maincolor;
+                         color: white; 
+                         transform: scale(1.1);
+                         transition: 0.3s;
+                    }
+               }
+          }
+          span{ 
+               display: inline-block;
+               font-size: 0.9rem;
+          }
+          i{
+               display: inline-block;
+               width: 55px;
+               height: 50px;
+               margin-bottom: 25px;
+               background: url(../img/png/forest_info.png) no-repeat;
+               &:hover {filter: brightness(0) invert(1);}
+          }
+     }
+     .pop_zone{
+          .slide{ overflow: hidden;}
+          ul{ display: flex;}
+          a{
+               display: block;
+               width: 312px;
+               height: 320px;
+          }
+          img{
+               width: 100%;
+               height: 100%;
+               object-fit: cover;
+          }
+     }
+     .forest_bug{
+          .heading_box span{ color: #ef4040;}
+          .wrapper{
+               display: flex;
+               flex-direction: column;
+               justify-content: space-between;
+          }
+          ul{
+               padding-top: 20px;
+               border-bottom: 1px solid #ddd;
+          }
+          li{
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               margin-bottom: 15px;
+               @for $i from 1 through 4{
+                    &:nth-child(#{$i}) i{ background-position-x: -34px * ($i - 1);}
+               }
+          }
+          i{
+               width: 34px;
+               height: 34px;
+               background: url(../img/png/forest_bug.png) no-repeat;
+               +span{
+                    padding-left: 10px; 
+                    margin-right: auto;
+                    +span{
+                         font-size: 1.2rem;
+                         b{ color:#ef4040;}
+                    }
+               }
+          }
+          ul~a div{
+               border-bottom: 1px solid #ddd; 
+               line-height: 3;
+          }
+     }
+}
+
+/* section-05 */
+.sec05{
+     background: #f5f6fa;
+     .flex_wrapper{
+          @include cont;
+          @include contpadding;
+     }
+     .alert, .info{
+          ul{ margin-top: 20px;}
+          li{ margin-bottom: 15px;}
+     }
+     .alert{ 
+          display: flex;
+          width: 50%; 
+          >div{ width: 50%;}
+           h3 span{color: #ef4040;}
+          .right{
+               overflow: hidden;
+               margin: 20px 0 0 20px;
+          }
+     }
+     .info,.sys{ 
+          width: 25%;
+          padding-left: 40px;
+     }
+     .info{
+          li{
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               &:nth-child(2) i {background-position-x: -34px;}
+               &:last-child i {background-position-x: -68px;}
+          }
+          i{
+               width: 34px;
+               height: 34px;
+               background: url(../img/png/forest_fire_status.png) no-repeat;
+               +span{ 
+                    padding-left: 10px;
+                    margin-right: auto;
+                    +span{
+                         font-size: 1.2rem;
+                         b{ color:#ef4040;}
+                    }
+               }
+          }
+     }
+     .sys{
+          a{
+               display: block;
+               &:first-child{border-bottom: 1px solid #ddd;}
+               +a div{ 
+                    padding-top: 10px;
+                    i{ background-position-x: -70px;}
+               }
+          }
+          div{
+               position: relative;
+               height: 50%;
+          }
+          strong{ 
+               display: block; 
+               padding-bottom: 10px;
+               color: #404040;
+               font-size: 1.1rem;
+          }
+          p{margin-bottom: 20px;}
+          i{
+               position: absolute;
+               right: 0;
+               bottom: 0;
+               width: 70px;
+               height: 58px;
+               background: url(../img/png/forest_fire_sys.png) no-repeat;
+          }
+     }
+}
+
+/* line-ban */
+.line_ban{
+     position: relative;
+     background: url(../img/jpg/family_site_forest.jpg) no-repeat center/cover;
+     .cont .line_slide{
+          overflow: hidden;
+          margin: 0 60px;
+     }
+     ul{ 
+          display: flex;
+          align-items: center;
+          width: 200%;
+          height: 100px;
+     }
+     li{ margin-right: 20px;
+          a{
+               color: white;
+               font-size: 1.2rem;
+          }
+     }
+}
